@@ -13,6 +13,7 @@
         <header>
             <h1>STARWALK HUD</h1>
             <div id="status">Initializing Astronomy Engine...</div>
+            <div id="location-row">Location: <span id="location">--</span></div>
         </header>
         
         <main>
@@ -30,10 +31,18 @@
             </div>
 
             <div id="moon-offset" style="margin-top: 15px; padding: 15px;">
-                <p><strong>Moon vs. Your View</strong></p>
+                <p><strong>Target vs. Your View</strong></p>
                 <p>Turn (Az): <span id="offset-az">--</span>&deg;</p>
                 <p>Tilt (Alt): <span id="offset-alt">--</span>&deg;</p>
                 <p id="guide">--</p>
+                <svg id="radar" viewBox="-70 -70 140 140" aria-label="Direction to target">
+                    <circle class="ring" r="60"></circle>
+                    <circle class="ring" r="30"></circle>
+                    <line class="axis" x1="-60" y1="0" x2="60" y2="0"></line>
+                    <line class="axis" x1="0" y1="-60" x2="0" y2="60"></line>
+                    <polygon id="radar-arrow" points="0,-50 8,-32 -8,-32" visibility="hidden"></polygon>
+                    <circle id="radar-dot" r="5" cx="0" cy="0"></circle>
+                </svg>
             </div>
 
             <div id="target-reticle">

@@ -8,7 +8,8 @@ An experimental augmented reality starmap web application designed for Meta Ray-
 
 - `index.html` - The main HUD container and UI layout.
 - `style.css` - Pure black background styling with high-contrast cyan vector elements.
-- `app.js` - Real-time device orientation sensor (`DeviceOrientationEvent`) handler.
+- `app.js` - Device orientation handling (with low-pass smoothing), Moon tracking, view-relative guidance, and the radar arrow.
+- `suncalc.min.js` - Bundled offline Moon calculation library.
 
 ---
 

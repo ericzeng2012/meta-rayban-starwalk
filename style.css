@@ -9,7 +9,8 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    overflow: hidden;
+    overflow-y: auto;
+    box-sizing: border-box;
 }
 
 #hud-container {
@@ -33,9 +34,40 @@ header h1 {
     margin-bottom: 15px;
 }
 
+#location-row {
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+}
+
 #orientation-data p, #celestial-target p {
     font-size: 1.1rem;
     margin: 8px 0;
+}
+
+#radar {
+    display: block;
+    width: 140px;
+    height: 140px;
+    margin: 10px auto 0;
+}
+
+#radar .ring, #radar .axis {
+    fill: none;
+    stroke: rgba(0, 255, 204, 0.35);
+    stroke-width: 1;
+}
+
+#radar-arrow {
+    fill: #00ffcc;
+}
+
+#radar-dot {
+    fill: #ffcc00;
+}
+
+#radar-dot.locked {
+    fill: #00ff66;
+    r: 9;
 }
 
 #target-reticle {
