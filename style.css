@@ -1,75 +1,55 @@
-/* Apply predictable sizing and remove browser-default spacing everywhere. */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-/* Center the HUD and use a dark, high-contrast color palette. */
+/* High-Contrast HUD Theme optimized for transparent displays */
 body {
     background-color: #000000;
-    color: #00FFCC;
-    font-family: monospace;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
+    color: #00ffcc;
+    font-family: monospace, sans-serif;
+    margin: 0;
+    padding: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
+    overflow: hidden;
 }
 
-/* Keep the HUD inside the viewport and arrange its header and content vertically. */
 #hud-container {
-    width: 90%;
-    height: 90%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    width: 100%;
+    max-width: 500px;
+    border: 2px solid #00ffcc;
     padding: 20px;
-    border: 1px solid rgba(0, 255, 204, 0.3);
-    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.4);
+    background: rgba(0, 0, 0, 0.85);
 }
 
-/* Make the title stand out with extra spacing and a soft cyan glow. */
 header h1 {
     font-size: 1.5rem;
+    margin: 0 0 5px 0;
     letter-spacing: 2px;
-    text-shadow: 0 0 8px rgba(0, 255, 204, 0.6);
-    margin-bottom: 5px;
 }
 
-/* Use white for status text so it contrasts with the cyan HUD accents. */
 #status {
-    font-size: 0.8rem;
-    color: #FFFFFF;
+    font-size: 0.85rem;
+    color: #ffcc00;
+    margin-bottom: 15px;
 }
 
-/* Give the live sensor readings a lightly tinted panel and room to breathe. */
-#orientation-data {
-    margin-top: 30px;
-    font-size: 1rem;
-    line-height: 1.8;
-    background: rgba(0, 255, 204, 0.05);
-    padding: 15px;
-    border-radius: 5px;
-}
-
-/* Center the scanning placeholder near the bottom of the HUD. */
-#target-reticle {
-    text-align: center;
-    margin-top: auto;
+#orientation-data p, #celestial-target p {
     font-size: 1.1rem;
-    letter-spacing: 3px;
+    margin: 8px 0;
 }
 
-/* Reuse the pulse animation on elements marked with the blink class. */
+#target-reticle {
+    margin-top: 25px;
+    text-align: center;
+    font-weight: bold;
+}
+
 .blink {
-    animation: pulse 1.5s infinite;
+    animation: blink-animation 1.5s steps(2, start) infinite;
 }
 
-/* Fade the scanning indicator in and out continuously. */
-@keyframes pulse {
-    0% { opacity: 0.3; }
-    50% { opacity: 1; }
-    100% { opacity: 0.3; }
+@keyframes blink-animation {
+    to {
+        visibility: hidden;
+    }
 }

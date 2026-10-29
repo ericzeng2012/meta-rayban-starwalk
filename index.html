@@ -4,33 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meta Ray-Ban Starmap</title>
-    <!-- Load the HUD's colors, layout, and animation rules. -->
     <link rel="stylesheet" href="style.css">
+    <!-- Local Offline SunCalc Library -->
+    <script src="suncalc.min.js"></script>
 </head>
 <body>
-    <!-- Main HUD panel: status at the top, sensor readings and reticle below. -->
     <div id="hud-container">
         <header>
             <h1>STARWALK HUD</h1>
-            <!-- app.js changes this message as sensor support or permission changes. -->
-            <div id="status">Initializing Sensors...</div>
+            <div id="status">Initializing Astronomy Engine...</div>
         </header>
         
         <main>
-            <!-- These IDs let app.js put live orientation readings into the page. -->
             <div id="orientation-data">
-                <p>Alpha (Heading): <span id="alpha">--</span>&deg;</p>
-                <p>Beta (Pitch): <span id="beta">--</span>&deg;</p>
-                <p>Gamma (Roll): <span id="gamma">--</span>&deg;</p>
+                <p>Head Heading (Alpha): <span id="alpha">--</span>&deg;</p>
+                <p>Head Pitch (Beta): <span id="beta">--</span>&deg;</p>
+                <p>Head Roll (Gamma): <span id="gamma">--</span>&deg;</p>
             </div>
-            <!-- Placeholder indicator; it does not identify stars yet. -->
+            
+            <!-- Celestial Target Box (Tracking the Moon) -->
+            <div id="celestial-target" style="margin-top: 15px; background: rgba(0, 255, 204, 0.05); padding: 15px; border-radius: 5px;">
+                <p id="target-label"><strong>Target: Moon</strong></p>
+                <p>Azimuth: <span id="target-az">--</span>&deg;</p>
+                <p>Altitude: <span id="target-alt">--</span>&deg;</p>
+            </div>
+
+            <div id="moon-offset" style="margin-top: 15px; padding: 15px;">
+                <p><strong>Moon vs. Your View</strong></p>
+                <p>Turn (Az): <span id="offset-az">--</span>&deg;</p>
+                <p>Tilt (Alt): <span id="offset-alt">--</span>&deg;</p>
+                <p id="guide">--</p>
+            </div>
+
             <div id="target-reticle">
-                <p class="blink">● SCANNING SKY</p>
+                <p class="blink">● TRACKING CELESTIAL GRID</p>
             </div>
         </main>
     </div>
 
-    <!-- Load the sensor code after the HUD elements so it can find them. -->
     <script src="app.js"></script>
 </body>
 </html>
